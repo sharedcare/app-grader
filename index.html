@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Greeting App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+    <link rel="stylesheet" href="./index.css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script>
+  </head>
+  <body>
+    <div class="ui text container">
+      <h1 class="ui dividing header">Grader</h1>
+
+      <h3 class="first">Input</h3>
+
+      <div class="ui three top attached steps">
+        <button class="upload active step ui button" onclick="uploadStep()">
+          <i class="cloud upload icon"></i>
+          <div class="content">
+            <div class="title">Upload</div>
+            <div class="description">Select your excel file</div>
+          </div>
+        </button>
+        <button class="edit disabled step ui button" onclick="editStep()">
+          <i class="edit icon"></i>
+          <div class="content">
+            <div class="title">Edit</div>
+            <div class="description">Edit your file</div>
+          </div>
+        </button>
+        <button class="download disabled step ui button" onclick="downloadStep()">
+          <i class="download icon"></i>
+          <div class="content">
+            <div class="title">Download</div>
+            <div class="description">Download edited file</div>
+          </div>
+        </button>
+      </div>
+      <div class="ui attached segment">
+        <div class="upload step content transition visible" style="line-height: 30px">
+          <input type="file" id="files" name="files" />
+          <button class="mini ui right labeled icon right floated green button transition hidden" onclick="editStep()">
+            <i class="right arrow icon"></i>
+            Next
+          </button>
+        </div>
+        <div class="edit step content transition hidden">
+          <div class="ui indicating progress" data-value="0" data-total="20" id="progress">
+            <div class="bar">
+              <div class="progress"></div>
+            </div>
+            <div class="label">Progress</div>
+          </div>
+          <div class="ui three column grid">
+            <div class="row">
+              <div class="column">
+                <div class="sheet ui floating dropdown labeled icon button">
+                  <i class="file outline icon"></i>
+                  <span class="text">Select Sheet</span>
+                  <div class="menu">
+                    <div class="ui icon search input">
+                      <i class="search icon"></i>
+                      <input type="text" placeholder="Search sheet...">
+                    </div>
+                    <div class="scrolling menu">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="column ui floating dropdown labeled icon button">
+                  <i class="columns icon"></i>
+                  <span class="text">Select Column</span>
+                  <div class="menu">
+                    <div class="ui icon search input">
+                      <i class="search icon"></i>
+                      <input type="text" placeholder="Search column...">
+                    </div>
+                    <div class="scrolling menu">
+                      <div class="item">A</div>
+                      <div class="item">B</div>
+                      <div class="item">C</div>
+                      <div class="item">D</div>
+                      <div class="item">E</div>
+                      <div class="item">F</div>
+                      <div class="item">G</div>
+                      <div class="item">H</div>
+                      <div class="item">I</div>
+                      <div class="item">J</div>
+                      <div class="item">K</div>
+                      <div class="item">L</div>
+                      <div class="item">M</div>
+                      <div class="item">N</div>
+                      <div class="item">O</div>
+                      <div class="item">P</div>
+                      <div class="item">Q</div>
+                      <div class="item">R</div>
+                      <div class="item">S</div>
+                      <div class="item">T</div>
+                      <div class="item">U</div>
+                      <div class="item">V</div>
+                      <div class="item">W</div>
+                      <div class="item">X</div>
+                      <div class="item">Y</div>
+                      <div class="item">Z</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <button class="mini ui right labeled icon right floated green button transition hidden" onclick="downloadStep()">
+                  <i class="right arrow icon"></i>
+                  Next
+                </button>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui input">
+                <input id="first" type="text" placeholder="ID">
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui input">
+                <input id="second" type="text" placeholder="Score">
+              </div>
+            </div>
+            <div class="column">
+              <button name="confirm" class="ui confirm primary button" onclick="confirmEdit()">
+                Confirm
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="download step content transition hidden">
+          <div class="ui right labeled input">
+            <input id="filename" type="text" placeholder="Download Filename">
+            <div class="ui label">
+              .xlsx
+            </div>
+          </div>
+          <button class="ui right floated primary button" onclick="downloadXls()">
+            Download
+          </button>
+        </div>
+      </div>
+      <h3 class="ui dividing header transition hidden">Preview</h3>
+      <div class="ui grid transition hidden" id="out"></div>
+
+    </div>
+    <script src="./xlsx.full.min.js"></script>
+    <script src="./index.js"></script>
+    <script src="./shim.js"></script>
+
+  </body>
+</html>
